@@ -14,7 +14,7 @@ script will be performed every day at 9 am. You can modify the execution time.
 
 [task_local]
 # Sakura Frp daily bonus script
-0 9 * * * SakuraFrp_GetCookie_QX.js
+0 9 * * * SakuraFrp_DailyBonus_QX.js
 
 [rewrite_local]
 # Get cookie. 【QX TF188+】:
