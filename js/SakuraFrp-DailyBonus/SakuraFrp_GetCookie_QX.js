@@ -40,7 +40,7 @@ if (SFRP) {
     if (!cookie) {
       $notify("首次写入 Sakura Frp Cookie失败‼️", "", "")
     } else {
-      $notify("首次写入Sakura Frp Cookie成功 🎉", "", "")
+      $notify("首次写入 Sakura Frp Cookie成功 🎉", "", "")
     }
   }
 }
