@@ -53,7 +53,6 @@ function getResult() {
                 try {
                     appnamereg.test(data);
                     var appname = appnamereg.exec(data);
-                    sy.log(appname)
                     if (!appname != null) {
                         var reg = /“.+”/
                         var item = reg.exec(appname[0]);
@@ -84,6 +83,7 @@ function getResult() {
 
         proarray[i] = p;
     }
+    sy.log(proarray)
     Promise.all(proarray).then((result) => {
         var hastr='';
         var nostr='';
