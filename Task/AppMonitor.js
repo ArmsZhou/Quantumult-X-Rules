@@ -146,7 +146,7 @@ app可单独设置区域，未单独设置区域，则采用reg默认区域
 console.log("APP监控运行");
 //是否总是弹出通知，默认不弹出,防止过多无用通知。
 var isNotify = true;
-let apps=["1373567447|us"];//app跟踪id
+let apps=["1314212521|us","1373567447|us"];//app跟踪id
 let reg="us";//默认区域：美国us 中国cn 香港hk
 let notifys=[];
 format_apps(apps);
