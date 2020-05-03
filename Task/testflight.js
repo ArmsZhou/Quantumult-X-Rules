@@ -13,23 +13,21 @@ const url = "https://testflight.apple.com/join/";
  * 例如"VCIvwk2g,wArXdacJ,2vnRvOTX,LzjySbQx,IdFRwmNy,qDkBu2ur,4Qt2lIm5,ZzqOu8tX,ftCqFe6D,fy7LvHVA,QKqitFwc"
 */
 /*
-VCIvwk2g : 圈❌
-QKqitFwc : 1.1.1.1 Faster Internet
-4nss4sdk : Shu 文件预览
-LzjySbQx : Anubis 网络开发调试/HTTP学习
-2vnRvOTX : Thor-HTTP抓包
-gqxvfosQ : 抖音国际版
-txDxjVc8 : 影音宝Pro
-Kts3HqEj : Pyto
-qDkBu2ur : Pythonista 3
-ZzqOu8tX : Working Copy - Git client
-
+VCIvwk2g : Quantumult X
+23LA2tmX : Loon
+u6iogfd0 : Telegram Messenger
+4nss4sdk : Shu
+LzjySbQx : Anubis
+wArXdacJ : Thor
+e07wV6pl : Nicegram
 */
-const appkey = "4nss4sdk,LzjySbQx,2vnRvOTX";
+const appkey = "VCIvwk2g,23LA2tmX,u6iogfd0,4nss4sdk,LzjySbQx,wArXdacJ,e07wV6pl";
+var apptitle = new Array("Quantumult X","Loon","Telegram Messenger","Shu","Anubis","Thor","Nicegram")
 
 //是否在没有tf位置的时候仍然弹出通知，默认不弹出,防止过多无用通知。
 var isNOtify = true;
-const fullstr = /(此 Beta 版本的测试员已满)|(此 Beta 版本目前不接受任何新测试员)/;
+const fullStr = /(此 Beta 版本的测试员已满)/;
+const notAcceptStr = /(此 Beta 版本目前不接受任何新测试员)/;
 const appnamereg = /<title>加入 Beta 版“(.+)” - TestFlight - Apple<\/title>/;
 var proarray = new Array();
 getResult();
@@ -41,8 +39,8 @@ function getResult() {
     var resultstr = false;
     var logdata={};
     for (var i = 0; i < apps.length; i++) {
-
         var p = new Promise(function (resolve) {
+            var index = i;
             var lol = {
                 url: url + apps[i],
                 headers: {
@@ -53,37 +51,46 @@ function getResult() {
                 try {
                     appnamereg.test(data);
                     var appname = appnamereg.exec(data);
+                    if (!appname) {
+                        var title = "<title>加入 Beta 版“"+ apptitle[index] + "” - TestFlight - Apple</title>," + apptitle[index]
+                        appname = new Array(title)
+                    }
+
                     if (!appname != null) {
                         var reg = /“.+”/
                         var item = reg.exec(appname[0]);
                         var name = item[0].replace('“', '').replace('”', '');
-                        if (!fullstr.test(data)) {
+                        if (fullStr.test(data)) {
+                            logdata[name]={
+                                'has':false,
+                                'context':':😥 测试员已满'+'\n'
+                            }
+                        } else if (notAcceptStr.test(data)) {
+                            logdata[name]={
+                                'has':false,
+                                'context':':😩 不接受任何新测试员'+'\n'
+                            }
+                        } else {
                             logdata[name]={
                                 'has':true,
                                 'context':upstr + '👉:' + lol.url + '\n'
                             }
                             resultstr=true;
                         }
-                        else{
-                            logdata[name]={
-                                'has':false,
-                                'context':':暂无车位'+'\n'
-                            }
-                        }
                     }
-                    resolve('done');
+                    resolve('done'); 
                 }
                 catch (errr) {
+                    sy.log("❌errr :" + errr)
                     resolve('done');
                 }
 
             });
         });
 
-
         proarray[i] = p;
     }
-    sy.log(logdata)
+
     Promise.all(proarray).then((result) => {
         var hastr='';
         var nostr='';
@@ -97,7 +104,7 @@ function getResult() {
         }
         if (resultstr) {
            
-            sy.msgt('', '', hastr+nostr);
+            sy.msg('', '', hastr+nostr);
         }
         else{
             if(isNOtify){
@@ -105,7 +112,7 @@ function getResult() {
             }
         }
         sy.log(hastr+nostr);
-         sy.done();
+        sy.done();
     }).catch((error) => {
         sy.log(error)
     });
