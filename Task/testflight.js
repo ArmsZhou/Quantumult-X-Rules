@@ -83,7 +83,7 @@ function getResult() {
 
         proarray[i] = p;
     }
-    sy.log(proarray)
+    sy.log(logdata)
     Promise.all(proarray).then((result) => {
         var hastr='';
         var nostr='';
