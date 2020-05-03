@@ -144,6 +144,8 @@ app可单独设置区域，未单独设置区域，则采用reg默认区域
 以上方式均可 分隔符支持 空格/:|_-
 */
 console.log("APP监控运行");
+//是否总是弹出通知，默认不弹出,防止过多无用通知。
+var isNotify = true;
 let apps=["1443988620|hk","1312014438 cn","499470113/vn","1314212521-jp","1282297037_au","932747118:ie","1116905928","1373567447"];//app跟踪id
 let reg="us";//默认区域：美国us 中国cn 香港hk
 let notifys=[];
@@ -219,7 +221,14 @@ async function post_data(d) {
                                 if(x.formattedPrice!==app_monitor[x.trackId].p){
                                     notifys.push(`${flag(k)}💰${x.trackName}:价格【${x.formattedPrice}】`)
                                 }
-                            }}
+                            }
+                            else{
+                                if (isNotify) {
+                                    notifys.push(`${flag(k)}🧩${x.trackName}:版本【${x.version}】`);
+                                    notifys.push(`${flag(k)}💰${x.trackName}:价格【${x.formattedPrice}】`)
+                                }
+                            }
+                        }
                         else{
                             notifys.push(`${flag(k)}🧩${x.trackName}:版本【${x.version}】`);
                             notifys.push(`${flag(k)}💰${x.trackName}:价格【${x.formattedPrice}】`)
