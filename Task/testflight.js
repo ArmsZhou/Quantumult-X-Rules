@@ -53,6 +53,7 @@ function getResult() {
                 try {
                     appnamereg.test(data);
                     var appname = appnamereg.exec(data);
+                    sy.log(appname)
                     if (!appname != null) {
                         var reg = /“.+”/
                         var item = reg.exec(appname[0]);
@@ -74,7 +75,6 @@ function getResult() {
                     resolve('done');
                 }
                 catch (errr) {
-                    sy.log(errr)
                     resolve('done');
                 }
 
