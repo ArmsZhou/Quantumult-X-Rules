@@ -21,7 +21,6 @@ LzjySbQx : Anubis 网络开发调试/HTTP学习
 gqxvfosQ : 抖音国际版
 txDxjVc8 : 影音宝Pro
 Kts3HqEj : Pyto
-IdFRwmNy : Kitsunebi - Proxy Utility
 qDkBu2ur : Pythonista 3
 ZzqOu8tX : Working Copy - Git client
 
@@ -75,6 +74,7 @@ function getResult() {
                     resolve('done');
                 }
                 catch (errr) {
+                    sy.log(errr)
                     resolve('done');
                 }
 
