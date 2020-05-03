@@ -26,7 +26,7 @@ qDkBu2ur : Pythonista 3
 ZzqOu8tX : Working Copy - Git client
 
 */
-const appkey = "VCIvwk2g,QKqitFwc,4nss4sdk,LzjySbQx,2vnRvOTX,gqxvfosQ,txDxjVc8,Kts3HqEj,IdFRwmNy,qDkBu2ur,ZzqOu8tX";
+const appkey = "4nss4sdk,LzjySbQx,2vnRvOTX";
 
 //是否在没有tf位置的时候仍然弹出通知，默认不弹出,防止过多无用通知。
 var isNOtify = true;
