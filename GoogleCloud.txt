@@ -1,2 +1,1 @@
-shadowsocks=35.185.153.164:45248, method=aes-256-cfb, password=zdlhnlg, fast-open=false, udp-relay=false, tag=SSR
-vmess = 35.185.153.164:24358, method=chacha20-ietf-poly1305, password=16bf5c0b-7267-4c99-83be-7ad07a55efb9, tag=V2Ray
+vmess = 34.92.2.178:32835, method=chacha20-ietf-poly1305, password=12f75065-373a-4c52-8703-3122a1254715, tag=GCP-HK
