@@ -1,1 +1,0 @@
-vmess = touchfish.alonegeek.com:443, method=chacha20-ietf-poly1305, password=7195cf24-8cb2-4a21-8481-09bf9c7e2d7f, obfs=wss, obfs-host=touchfish.alonegeek.com, obfs-uri=/touchfishhome, tag=GCP-HK
